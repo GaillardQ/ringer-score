@@ -5,7 +5,9 @@
 
 var express = require('express');
 var routes = require('./routes');
-var user = require('./routes/user');
+var index = require('./routes/index');
+var card = require('./routes/card');
+var results = require('./routes/results');
 var http = require('http');
 var path = require('path');
 
@@ -13,8 +15,10 @@ var app = express();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
+app.set('view engine', 'twig');
+// This section is optional and can be used to configure twig.
+app.set('twig options', { strict_variables: false });
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
@@ -32,8 +36,8 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/users', user.list);
-app.get('/users/:id', user.show);
+app.get('/card/:hole', card.hole);
+app.get('/results', results.index);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
