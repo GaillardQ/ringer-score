@@ -8,7 +8,11 @@ a {
 }
 
 .container {
+<<<<<<< HEAD
     background-color: #00ff00;
+=======
+    background-color: #ff0000;
+>>>>>>> c6562cfe99d62aeb5e4ad27110f3e520ea606a47
     border-radius: 10px;
     padding-bottom: 10px;
     padding-top: 10px;
