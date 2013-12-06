@@ -32,7 +32,7 @@ function updateBeginForm()
 	var class_width_3 = "col-xs-"+xs3+" col-sm-"+sm3+" col-md-"+md3+" col-lg-"+lg3;
 
 	var colors = new Array("red", "blue", "green", "yellow");
-	var html = "<div class=\""+class_width_1+"\"></div>";
+	var html = "<div class=\"row\"><div class=\""+class_width_1+"\"></div>";
 	var j;
 	for(var i=0; i<nb_players; i++)
 	{
@@ -52,7 +52,7 @@ function updateBeginForm()
 		html += "</div>"
 
 	}
-	html += "<div class=\""+class_width_1+"\"></div>";
+	html += "<div class=\""+class_width_1+"\"></div></div>";
 
 	$("#form_players").html(html);
 }
@@ -75,20 +75,25 @@ function validForm()
 		{
 			error_content += "\t - Joueur "+j+" : le nom est vide\n";
 		}
-		
 		if(index == "")
 		{
 			error_content += "\t - Joueur "+j+" : l'index est vide\n";
 		}
-
-		if(typeof index != number)
+		else 
 		{
-			error_content += "\t - Joueur "+j+" : l'index n'est pas un nombre/chiffre\n";
+			index = parseFloat(index);
+			if(index == NaN)
+			{
+				error_content += "\t - Joueur "+j+" : l'index n'est pas un nombre/chiffre\n";
+			}
 		}
 	}
 
 	if(error_content != "")
 	{
 		alert("Il y a eu un problème : \n " + error_content);
+		res = false;
 	}
+
+	return res;
 }

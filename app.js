@@ -36,6 +36,7 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+app.post('/', routes.index);
 app.get('/card/:hole', card.hole);
 app.get('/results', results.index);
 

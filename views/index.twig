@@ -31,7 +31,7 @@
           <div class="center">
             <h5>Débuter une partie</h5>
           </div>
-          <form>
+          <form method="POST" onsubmit="return validForm();">
             <div class="center space_under_10">
               <label for="select_nb">Nombre de joueurs :</label>
               <select class="selectpicker" onchange="updateBeginForm()" id="select_nb" name="select_nb">
@@ -44,7 +44,7 @@
             </div>
             <div id="form_players"></div>
             <div class="center">
-              <input type="submit" value="Commencer" onclick="validForm()" />
+              <input type="submit" value="Commencer" />
             </div>
           </form>
         </div>
