@@ -36,20 +36,59 @@ function updateBeginForm()
 	var j;
 	for(var i=0; i<nb_players; i++)
 	{
-		//style=\"background-color:"+colors[i]+"\"
-		html += "<div class=\""+class_width_2+"\">";
-			html += "<div class=\"space_under_10\">"
-				html += "<label class=\"control-label\" for=\"username_"+i+"\">Nom/Prénom : </label>";
-				html += "<input class=\"form-control\" name=\"username_"+i+"\" id=\"username_"+i+"\" type=\"texte\" placeholder=\"(ex : Quentin Gaillard)\" />"
-			html += "</div>"
-			html += "<div class=\"space_under_10\">"
-				html += "<label class=\"control-label\" for=\"index_"+i+"\">Index : </label>";
-				html += "<input class=\"form-control\" name=\"index_"+i+"\" id=\"index_"+i+"\" type=\"texte\" placeholder=\"(ex : 18.5)\" />"
-			html += "</div>"
+		j = i+1;
+		html += "<div class=\""+class_width_2+" space_under_50\">";
+			html += "<fieldset>"
+				html += "<legend>Joueur "+j+"</legend>";
+				html += "<div class=\"space_under_10\">"
+					html += "<label class=\"control-label\" for=\"username_"+i+"\">Nom/Prénom : </label>";
+					html += "<input class=\"form-control\" name=\"username_"+i+"\" id=\"username_"+i+"\" type=\"texte\" placeholder=\"(ex : Quentin Gaillard)\" />"
+				html += "</div>"
+				html += "<div class=\"space_under_10\">"
+					html += "<label class=\"control-label\" for=\"index_"+i+"\">Index : </label>";
+					html += "<input class=\"form-control\" name=\"index_"+i+"\" id=\"index_"+i+"\" type=\"texte\" placeholder=\"(ex : 18.5)\" />"
+				html += "</div>"
+			html += "</fieldset>";
 		html += "</div>"
 
 	}
 	html += "<div class=\""+class_width_1+"\"></div>";
 
 	$("#form_players").html(html);
+}
+
+function validForm()
+{
+	var nb_players = parseInt($("#select_nb").val());
+	var j, name, index;
+
+	var error_content = "";
+
+	for(var i=0; i<nb_players; i++)
+	{
+		j = i+1;
+		name = $("#username_"+i).val();
+		index = $("#index_"+i).val();
+		index.replace(",", ".");
+
+		if(name == "")
+		{
+			error_content += "\t - Joueur "+j+" : le nom est vide\n";
+		}
+		
+		if(index == "")
+		{
+			error_content += "\t - Joueur "+j+" : l'index est vide\n";
+		}
+
+		if(typeof index != number)
+		{
+			error_content += "\t - Joueur "+j+" : l'index n'est pas un nombre/chiffre\n";
+		}
+	}
+
+	if(error_content != "")
+	{
+		alert("Il y a eu un problème : \n " + error_content);
+	}
 }

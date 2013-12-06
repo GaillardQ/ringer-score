@@ -27,17 +27,25 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 center">
-          <h5>Débuter une partie</h5>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="center">
+            <h5>Débuter une partie</h5>
+          </div>
           <form>
-            <label for="select_nb">Nombre de joueurs :</label>
-            <select class="selectpicker" onchange="updateBeginForm()" id="select_nb" name="select_nb">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
+            <div class="center space_under_10">
+              <label for="select_nb">Nombre de joueurs :</label>
+              <select class="selectpicker" onchange="updateBeginForm()" id="select_nb" name="select_nb">
+                <option value="0">---</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
             <div id="form_players"></div>
+            <div class="center">
+              <input type="submit" value="Commencer" onclick="validForm()" />
+            </div>
           </form>
         </div>
       </div>
