@@ -6,6 +6,7 @@
 var express = require('express');
 var routes = require('./routes');
 var index = require('./routes/index');
+var begin = require('./routes/begin');
 var card = require('./routes/card');
 var results = require('./routes/results');
 var http = require('http');
@@ -35,8 +36,8 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
-app.post('/', routes.index);
+app.get('/', index.index);
+app.post('/begin', begin.index);
 app.get('/card/:hole', card.hole);
 app.get('/results', results.index);
 

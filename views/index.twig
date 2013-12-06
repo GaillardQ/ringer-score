@@ -12,7 +12,7 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="/javascripts/jquery-1.10.2.min.js"></script>
     <script src="/javascripts/bootstrap.min.js"></script>
-    <script src="/javascripts/begin.js"></script>
+    <script src="/javascripts/index.js"></script>
   </head>
   <body>
     <div class="container space_under_10">
@@ -31,7 +31,7 @@
           <div class="center">
             <h5>Débuter une partie</h5>
           </div>
-          <form method="POST" onsubmit="return validForm();">
+          <form action="/begin" method="POST" onsubmit="return validForm();">
             <div class="center space_under_10">
               <label for="select_nb">Nombre de joueurs :</label>
               <select class="selectpicker" onchange="updateBeginForm()" id="select_nb" name="select_nb">

@@ -69,7 +69,7 @@ function validForm()
 		j = i+1;
 		name = $("#username_"+i).val();
 		index = $("#index_"+i).val();
-		index.replace(",", ".");
+		index = index.replace(",", ".");
 
 		if(name == "")
 		{
@@ -82,7 +82,8 @@ function validForm()
 		else 
 		{
 			index = parseFloat(index);
-			if(index == NaN)
+			
+			if(isNaN(index))
 			{
 				error_content += "\t - Joueur "+j+" : l'index n'est pas un nombre/chiffre\n";
 			}
