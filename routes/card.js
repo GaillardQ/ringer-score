@@ -3,5 +3,7 @@
  */
 
 exports.hole = function(req, res){
-  res.render('card', null);
+	var hole = req.params.hole;
+	var scores = req.
+  	res.render('card', {hole: hole});
 };
