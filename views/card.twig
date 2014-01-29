@@ -1,11 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CARTE DE SCORE</title>
+    <title>{{ title }}</title>
+
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+
+    <link rel='stylesheet' href='/stylesheets/bootstrap-theme.min.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/jquery-1.10.2.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/card.js"></script>
   </head>
   <body>
-    <h1>CARTE DE SCORE</h1>
-    <h2>{{ hole }}</h2>
+    <div class="container space_under_10">
+      <div class="row">
+        <div class="col-xs-0 col-sm-0 col-md-3 col-lg-3 center"></div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 center">
+          <h1>Carte de score</h1>
+        </div>
+        <div class="col-xs-0 col-sm-0 col-md-3 col-lg-3 center"></div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="center">
+            <h5>Hole {{ hole }}</h5>
+          </div>
+          
+          <form onload="createCardForm({{ hole }})">
+            <div class="center space_under_10" id="card_content">
+            </div>
+        </form>
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>
