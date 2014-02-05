@@ -32,13 +32,23 @@
             <h5>Hole {{ hole }}</h5>
           </div>
           
-          <form onload="createCardForm({{ hole }})">
-            <div class="center space_under_10" id="card_content">
+          <form>
+            <div class="space_under_10" id="card_content">
             </div>
         </form>
         </div>
       </div>
     </div>
-
+    <script>
+      $( document ).ready(function() {
+        var users = new Array();
+        var i=0;
+        {% for s in scores %}
+          users[i] = '{{ s[0] }}';
+          i++;
+        {% endfor %}
+        createCardForm({{ hole }}, {{ scores|length }}, users);
+      });
+    </script>
   </body>
 </html>

@@ -1,6 +1,5 @@
-function createCardForm()
+function createCardForm(hole, nb_players, users)
 {
-	/*var nb_players = parseInt($("#select_nb").val());
 
 	var xs1 = 0, sm1 = 3, md1 = 4, lg1 = 4;
 	var xs2 = 12, sm2 = 6, md2 = 4, lg2 = 4;
@@ -31,7 +30,6 @@ function createCardForm()
 	var class_width_2 = "col-xs-"+xs2+" col-sm-"+sm2+" col-md-"+md2+" col-lg-"+lg2;
 	var class_width_3 = "col-xs-"+xs3+" col-sm-"+sm3+" col-md-"+md3+" col-lg-"+lg3;
 
-	var colors = new Array("red", "blue", "green", "yellow");
 	var html = "<div class=\"row\"><div class=\""+class_width_1+"\"></div>";
 	var j;
 	for(var i=0; i<nb_players; i++)
@@ -39,14 +37,14 @@ function createCardForm()
 		j = i+1;
 		html += "<div class=\""+class_width_2+" space_under_50\">";
 			html += "<fieldset>"
-				html += "<legend>Joueur "+j+"</legend>";
+				html += "<legend>"+users[i]+"</legend>";
 				html += "<div class=\"space_under_10\">"
-					html += "<label class=\"control-label\" for=\"username_"+i+"\">Nom/Prénom : </label>";
-					html += "<input class=\"form-control\" name=\"username_"+i+"\" id=\"username_"+i+"\" type=\"texte\" placeholder=\"(ex : Quentin Gaillard)\" />"
+					html += "<label class=\"control-label\" for=\"score_"+i+"\">Score : </label>";
+					html += "<input class=\"form-control\" name=\"score_"+i+"\" id=\"score_"+i+"\" type=\"texte\"/>"
 				html += "</div>"
 				html += "<div class=\"space_under_10\">"
-					html += "<label class=\"control-label\" for=\"index_"+i+"\">Index : </label>";
-					html += "<input class=\"form-control\" name=\"index_"+i+"\" id=\"index_"+i+"\" type=\"texte\" placeholder=\"(ex : 18.5)\" />"
+					html += "<label class=\"control-label\" for=\"putts_"+i+"\">Nombre de putts : </label>";
+					html += "<input class=\"form-control\" name=\"putts_"+i+"\" id=\"putts_"+i+"\" type=\"texte\" />"
 				html += "</div>"
 			html += "</fieldset>";
 		html += "</div>"
@@ -54,5 +52,5 @@ function createCardForm()
 	}
 	html += "<div class=\""+class_width_1+"\"></div></div>";
 
-	$("#form_players").html(html);*/
+	$("#card_content").html(html);
 }

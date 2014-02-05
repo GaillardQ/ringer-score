@@ -10,38 +10,32 @@ exports.index = function(req, res){
 	/*
 	Tableau des scores :
 	var[a] -> joueur a
-		var[a]["name"] -> nom joueur a
-		var[a]["index"] -> index joueur a
-		var[a]["course"] -> infos sur le parcours du joueur a
-		var[a]["course"][b] -> infos sur le trou b du joueur a
-		var[a]["course"][b]["score"] -> score sur le trou b du joueur a
-		var[a]["course"][b]["putt"] -> nombre de putts sur le trou b du joueur a
-		var[a]["course"][b]["recus"] -> coups reçus sur le trou b du joueur a
+		var[a][0] -> nom joueur a
+		var[a][1] -> index joueur a
+		var[a][2] -> infos sur le parcours du joueur a
+		var[a][2][b] -> infos sur le trou b du joueur a
+		var[a][2][b][0] -> score sur le trou b du joueur a
+		var[a][2][b][1] -> nombre de putts sur le trou b du joueur a
+		var[a][2][b][2] -> coups reçus sur le trou b du joueur a
 	*/
 	/*************************/
 	var scores = new Array();
 	for(var i=0; i< req.body.select_nb; i++)
 	{
 		scores[i] = new Array();
-		scores[i]["a"] = "test 1";
-		scores[i]["b"] = "test 2";
-		scores[i]["c"] = "test 3";
-		scores[i]["d"] = "test 4";
-		/*scores[i]["name"] = req.body["username_"+i];
-		scores[i]["index"] = req.body["index_"+i];
-		scores[i]["course"] = new Array(18);
+		scores[i][0] = req.body["username_"+i];
+		scores[i][1] = req.body["index_"+i];
+		scores[i][2] = new Array(18);
 
 		for(var j=0; j<18; j++)
 		{
-			scores[i]["course"][j] = new Array();
-			scores[i]["course"][j]["score"] = 0;
-			scores[i]["course"][j]["putt"] = 0;
-			scores[i]["course"][j]["recus"] = i*j; // A calculer
-		}*/
+			scores[i][2][j] = new Array();
+			scores[i][2][j][0] = 0;
+			scores[i][2][j][1] = 0;
+			scores[i][2][j][2] = i*j; // A calculer
+		}
 	}
 
-	// Utiliser Redis ?
-	// Utiliser un tableau non associatif ?
 	req.session.scores = scores;
 
 	var util = require('util');
