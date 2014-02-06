@@ -38,8 +38,8 @@ exports.index = function(req, res){
 
 	req.session.scores = scores;
 
-	var util = require('util');
-	console.log(util.inspect(req.session, false, null));
+	//var util = require('util');
+	//console.log(util.inspect(req.session, false, null));
 
   	res.redirect('/card/1');
 };

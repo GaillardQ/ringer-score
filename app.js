@@ -8,6 +8,7 @@ var routes = require('./routes');
 var index = require('./routes/index');
 var begin = require('./routes/begin');
 var card = require('./routes/card');
+var save = require('./routes/save');
 var results = require('./routes/results');
 var http = require('http');
 var path = require('path');
@@ -39,6 +40,7 @@ if ('development' == app.get('env')) {
 app.get('/', index.index);
 app.post('/begin', begin.index);
 app.get('/card/:hole', card.hole);
+app.post('/save', save.index);
 app.get('/results', results.index);
 
 http.createServer(app).listen(app.get('port'), function(){

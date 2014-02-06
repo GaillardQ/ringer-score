@@ -38,6 +38,7 @@ function createCardForm(hole, nb_players, users)
 		html += "<div class=\""+class_width_2+" space_under_50\">";
 			html += "<fieldset>"
 				html += "<legend>"+users[i]+"</legend>";
+				html += "<input class=\"hidden\" name=\"id_"+i+"\" id=\"id_"+i+"\" type=\"texte\" value=\""+i+"\"/>"
 				html += "<div class=\"space_under_10\">"
 					html += "<label class=\"control-label\" for=\"score_"+i+"\">Score : </label>";
 					html += "<input class=\"form-control\" name=\"score_"+i+"\" id=\"score_"+i+"\" type=\"texte\"/>"
