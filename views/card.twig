@@ -33,13 +33,14 @@
           </div>
           
           <form method="POST" action="/save">
-            <input type="text" class="hidden" value="{{ hole }}"/>
+            <input type="text" class="hidden" name="hole" id="hole" value="{{ hole }}"/>
             <div class="space_under_10" id="card_content">
             </div>
             <div class="row">
               <center>
+                {% set prev = hole-1 %}
                 {% if hole != 1 %}
-                  <a class="btn btn-default">Revenir</a>
+                  <a class="btn btn-default" href="/card/{{ prev }}">Revenir</a>
                 {% endif %}
                 {% if hole != 18 %}
                   <input type="submit" class="btn btn-default" value="Valider" />

@@ -10,8 +10,24 @@ exports.index = function(req, res){
 	//var util = require('util');
 	//console.log("[]"+util.inspect(req.body, false, null));
 
+    var hole = parseInt(req.body["hole"]);
+
+    var score, putts, id;
   	for(var i=0; i< nb_players; i++)
 	{
-		//req.body["username_"+i];
+		id      = req.body["id_"+i];
+        score   = req.body["score_"+i];
+        putts    = req.body["putts_"+i];
+
+        scores[id][2][hole-1][0] = score;
+        scores[id][2][hole-1][1] = putts;
 	}
+
+    req.session.scores = scores;
+
+    var util = require('util');
+    console.log("[]"+util.inspect(req.session.scores, false, null));
+
+    hole++;
+    res.redirect('/card/'+hole);
 };
