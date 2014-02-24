@@ -19,6 +19,8 @@ exports.index = function(req, res){
         score   = req.body["score_"+i];
         putts    = req.body["putts_"+i];
 
+        //@todo : check si entiers
+
         scores[id][2][hole-1][0] = score;
         scores[id][2][hole-1][1] = putts;
 	}
