@@ -19,7 +19,10 @@ exports.index = function(req, res){
         score   = req.body["score_"+i];
         putts    = req.body["putts_"+i];
 
-        //@todo : check si entiers
+        if(!isInt(score))
+        {
+            alert('Pas un entier');
+        }
 
         scores[id][2][hole-1][0] = score;
         scores[id][2][hole-1][1] = putts;
@@ -33,3 +36,7 @@ exports.index = function(req, res){
     hole++;
     res.redirect('/card/'+hole);
 };
+
+function isInt(n) {
+    return typeof n === 'number' && n % 1 == 0;
+}
