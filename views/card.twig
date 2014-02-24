@@ -32,7 +32,7 @@
             <h3>Hole {{ hole }}</h3>
           </div>
           
-          <form method="POST" action="/save">
+          <form method="POST" action="/save" onsubmit="return validHole();">
             <input type="text" class="hidden" name="hole" id="hole" value="{{ hole }}"/>
             <div class="space_under_10" id="card_content">
             </div>

@@ -55,3 +55,12 @@ function createCardForm(hole, nb_players, users)
 
 	$("#card_content").html(html);
 }
+
+function validHole()
+{
+    alert("ici, on check que les données soient correctes");
+}
+
+function isInt(n) {
+    return typeof n === 'number' && n % 1 == 0;
+}
