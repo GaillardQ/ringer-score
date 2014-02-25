@@ -92,7 +92,7 @@ function validForm()
 
 	if(error_content != "")
 	{
-		alert("Il y a eu un problème : \n " + error_content);
+		alert("Il y a eu un/des problème(s) : \n " + error_content);
 		res = false;
 	}
 

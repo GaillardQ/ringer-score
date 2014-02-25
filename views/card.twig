@@ -34,6 +34,7 @@
           
           <form method="POST" action="/save" onsubmit="return validHole();">
             <input type="text" class="hidden" name="hole" id="hole" value="{{ hole }}"/>
+            <input type="text" class="hidden" name="nb_player" id="nb_players" value="{{ nb_players }}"/>
             <div class="space_under_10" id="card_content">
             </div>
             <div class="row">
@@ -54,12 +55,19 @@
     <script>
       $( document ).ready(function() {
         var users = new Array();
+        var hole_scores = new Array();
+        var hole_putts = new Array();
+
         var i=0;
         {% for s in scores %}
           users[i] = '{{ s[0] }}';
+          hole_scores[i] = {{ s[2][hole-1][0] }};
+          hole_putts[i] = {{ s[2][hole-1][1] }};
           i++;
         {% endfor %}
-        createCardForm({{ hole }}, {{ scores|length }}, users);
+
+
+        createCardForm({{ hole }}, {{ scores|length }}, users, hole_scores, hole_putts);
       });
     </script>
   </body>

@@ -1,4 +1,4 @@
-function createCardForm(hole, nb_players, users)
+function createCardForm(hole, nb_players, users, hole_scores, hole_putts)
 {
 
 	var xs1 = 0, sm1 = 3, md1 = 4, lg1 = 4;
@@ -37,15 +37,30 @@ function createCardForm(hole, nb_players, users)
 		j = i+1;
 		html += "<div class=\""+class_width_2+" space_under_50\">";
 			html += "<fieldset>"
+                html += "<input type=\"hidden\" id=\"name_"+i+"\" value=\""+users[i]+"\">";
 				html += "<legend>"+users[i]+"</legend>";
 				html += "<input class=\"hidden\" name=\"id_"+i+"\" id=\"id_"+i+"\" type=\"texte\" value=\""+i+"\"/>"
 				html += "<div class=\"space_under_10\">"
 					html += "<label class=\"control-label\" for=\"score_"+i+"\">Score : </label>";
-					html += "<input class=\"form-control\" name=\"score_"+i+"\" id=\"score_"+i+"\" type=\"texte\"/>"
+                    if(hole_scores[i] != "")
+                    {
+					    html += "<input class=\"form-control\" name=\"score_"+i+"\" id=\"score_"+i+"\" type=\"texte\" value=\""+hole_scores[i]+"\"/>"
+                    }
+                    else
+                    {
+                        html += "<input class=\"form-control\" name=\"score_"+i+"\" id=\"score_"+i+"\" type=\"texte\"/>"
+                    }
 				html += "</div>"
 				html += "<div class=\"space_under_10\">"
 					html += "<label class=\"control-label\" for=\"putts_"+i+"\">Nombre de putts : </label>";
-					html += "<input class=\"form-control\" name=\"putts_"+i+"\" id=\"putts_"+i+"\" type=\"texte\" />"
+                    if(hole_putts[i] != "")
+                    {
+                        html += "<input class=\"form-control\" name=\"putts_"+i+"\" id=\"putts_"+i+"\" type=\"texte\" value=\""+hole_putts[i]+"\"/>"
+                    }
+                    else
+                    {
+                        html += "<input class=\"form-control\" name=\"putts_"+i+"\" id=\"putts_"+i+"\" type=\"texte\" />"
+                    }
 				html += "</div>"
 			html += "</fieldset>";
 		html += "</div>"
@@ -58,7 +73,53 @@ function createCardForm(hole, nb_players, users)
 
 function validHole()
 {
-    alert("ici, on check que les données soient correctes");
+    var nb_players = parseInt($("#nb_players").val());
+    var j, score, putts, name;
+
+    var error_content = "";
+
+    var res = true;
+
+    for(var i=0; i<nb_players; i++)
+    {
+        j = i+1;
+        score = parseInt($("#score_"+i).val());
+        putts = parseInt($("#putts_"+i).val());
+        name  = $("#name_"+i).val();
+
+        console.log(name+" : "+score+"("+putts+")");
+
+        if(score == "")
+        {
+            error_content += "\t - "+name+" : le score est vide\n";
+        }
+        else
+        {
+            if(isNaN(score))
+            {
+                error_content += "\t - "+name+" : le score n'est pas un chiffre\n";
+            }
+        }
+        if(putts == "")
+        {
+            error_content += "\t - "+name+" : le nombre de putts est vide\n";
+        }
+        else
+        {
+            if(isNaN(putts))
+            {
+                error_content += "\t - "+name+" : le nombre de putts n'est pas un chiffre\n";
+            }
+        }
+    }
+
+    if(error_content != "")
+    {
+        alert("Il y a eu un/des problème(s) : \n " + error_content);
+        res = false;
+    }
+
+    return res;
 }
 
 function isInt(n) {
