@@ -8,7 +8,7 @@ exports.index = function(req, res){
 
     var data_albon = new Array();
 
-    data_albon["par"] = 72;
+    data_albon["par_total"] = 72;
 
     data_albon["slope"] = new Array();
     data_albon["slope"]["noir"]     = 143;
@@ -69,16 +69,21 @@ exports.index = function(req, res){
 	/*
 	Tableau des scores :
 	var[a] -> joueur a
-		var[a][0] -> nom joueur a
-		var[a][1] -> index joueur a
-		var[a][2] -> infos sur le parcours du joueur a
-		var[a][2][b] -> infos sur le trou b du joueur a
+		var[a][0]       -> nom joueur a
+		var[a][1]       -> index joueur a
+		var[a][2]       -> infos sur le parcours du joueur a
+		var[a][2][b]    -> infos sur le trou b du joueur a
 		var[a][2][b][0] -> score sur le trou b du joueur a
 		var[a][2][b][1] -> nombre de putts sur le trou b du joueur a
 		var[a][2][b][2] -> coups reçus sur le trou b du joueur a
         var[a][2][b][3] -> coups rendus sur le trou b du joueur a
         var[a][2][b][4] -> par du trou b du joueur a
-        var[a][3] -> infos sur les boules de départ du joueur a
+        var[a][3]       -> infos sur les boules de départ du joueur a
+        var[a][4]       -> résultats du joueur a
+        var[a][4][0]    -> nombre de coups total du joueur a
+        var[a][4][1]    -> résultats net du joueur a
+        var[a][4][2]    -> résultats brut du joueur a
+        var[a][4][3]    -> nombre de putts du joueur a
 	*/
 	/*************************/
 	var scores = new Array();
@@ -90,6 +95,7 @@ exports.index = function(req, res){
 		scores[i] = new Array();
 		scores[i][0] = req.body["username_"+i];
 		index = req.body["index_"+i];
+        index = index.replace(",", ".");
         if(index > 36)
         {
             index = Math.floor(index);
@@ -127,11 +133,23 @@ exports.index = function(req, res){
         }
 
         // ((index) x (slope) / 113) + SSS - PAR
-        nb_shots = ((index) * (slope) / 113) + ssl - data_albon["par"];
+
+
+        console.log("Index : "+index);
+        console.log("Slope : "+slope);
+        console.log("SSL : "+ssl);
+        console.log("Par : "+data_albon["par_total"]);
+
+        nb_shots = ((index) * (slope) / 113) + ssl - data_albon["par_total"];
         nb_shots = Math.round(nb_shots);
+
+        console.log("Coups reçus : "+nb_shots);
 
         var nb_extras = nb_shots % 18;
         var nb_base = (nb_shots - nb_extras)/18;
+
+        console.log("Coups extras : "+nb_extras);
+        console.log("Coups reçus de base : "+nb_base);
 
         var nb;
 
@@ -155,8 +173,8 @@ exports.index = function(req, res){
 
 	req.session.scores = scores;
 
-	var util = require('util');
-	console.log(util.inspect(req.session.scores, false, null));
+	//var util = require('util');
+	//console.log(util.inspect(req.session.scores, false, null));
 
   	res.redirect('/card/1');
 };

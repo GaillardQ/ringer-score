@@ -12,7 +12,7 @@ exports.index = function(req, res){
 
     var hole = parseInt(req.body["hole"]);
 
-    var score, putts, id, shots, par, diff;
+    var score, putts, id, shots, par, diff, points;
   	for(var i=0; i< nb_players; i++)
 	{
 		id      = req.body["id_"+i];
@@ -26,39 +26,48 @@ exports.index = function(req, res){
         switch (diff)
         {
             case -6:
-                //6 points
+                points = 7;
                 break;
             case -5:
-                //6 points
+                points = 6;
                 break;
             case -4:
-                //5 points
+                points = 5;
                 break;
             case -2:
-                //4 points
+                points = 4;
                 break;
             case -1:
-                //3 points
+                points = 3;
                 break;
             case 0:
-                //2 points
+                points = 2;
                 break;
             case 1:
-                //1 points
+                points = 1;
                 break;
+            default :
+                points = 0;
         }
 
         scores[id][2][hole-1][0] = score;
         scores[id][2][hole-1][1] = putts;
-
+        scores[id][2][hole-1][3] = points;
 	}
 
     req.session.scores = scores;
 
-    var util = require('util');
-    console.log("[]"+util.inspect(req.session.scores, false, null));
+    //var util = require('util');
+    //console.log("[]"+util.inspect(req.session.scores, false, null));
 
     hole++;
-    res.redirect('/card/'+hole);
+    if(hole <= 18)
+    {
+        res.redirect('/card/'+hole);
+    }
+    else
+    {
+        res.redirect('/results');
+    }
 };
 
