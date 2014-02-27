@@ -44,6 +44,26 @@ exports.index = function(req, res){
     data_albon["ranking"][16] = 3;
     data_albon["ranking"][17] = 9;
 
+    data_albon["par"] = new Array();
+    data_albon["par"][0] = 3;
+    data_albon["par"][1] = 4;
+    data_albon["par"][2] = 4;
+    data_albon["par"][3] = 5;
+    data_albon["par"][4] = 4;
+    data_albon["par"][5] = 3;
+    data_albon["par"][6] = 5;
+    data_albon["par"][7] = 4;
+    data_albon["par"][8] = 5;
+    data_albon["par"][9] = 4;
+    data_albon["par"][10] = 4;
+    data_albon["par"][11] = 4;
+    data_albon["par"][12] = 4;
+    data_albon["par"][13] = 3;
+    data_albon["par"][14] = 4;
+    data_albon["par"][15] = 3;
+    data_albon["par"][16] = 5;
+    data_albon["par"][17] = 4;
+
 
 	/***** DOCUMENTATION *****/
 	/*
@@ -57,6 +77,7 @@ exports.index = function(req, res){
 		var[a][2][b][1] -> nombre de putts sur le trou b du joueur a
 		var[a][2][b][2] -> coups reçus sur le trou b du joueur a
         var[a][2][b][3] -> coups rendus sur le trou b du joueur a
+        var[a][2][b][4] -> par du trou b du joueur a
         var[a][3] -> infos sur les boules de départ du joueur a
 	*/
 	/*************************/
@@ -127,6 +148,8 @@ exports.index = function(req, res){
             }
 
 			scores[i][2][j][2] = nb;
+            scores[i][2][j][3] = 0;
+            scores[i][2][j][4] = data_albon["par"][j];
 		}
 	}
 
