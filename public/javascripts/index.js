@@ -43,7 +43,18 @@ function updateBeginForm()
 				html += "<div class=\"space_under_10\">"
 					html += "<label class=\"control-label\" for=\"username_"+i+"\">Nom/Prénom : </label>";
 					html += "<input class=\"form-control\" name=\"username_"+i+"\" id=\"username_"+i+"\" type=\"texte\" placeholder=\"(ex : Quentin Gaillard)\" />"
-				html += "</div>"
+				html += "</div>";
+                html += "<div class=\"space_under_10\">"
+                    html += "<label class=\"control-label\" for=\"departure_"+i+"\">Départ : </label><br />";
+                    html += "<select class=\"\" name=\"departure_"+i+"\" id=\"departure_"+i+"\">"
+                        html += "<option value=\"-\">---</option>";
+                        html += "<option value=\"R\">Boules rouges</option>";
+                        html += "<option value=\"B\">Boules bleues</option>";
+                        html += "<option value=\"Y\">Boules jaunes</option>";
+                        html += "<option value=\"W\">Boules blanches</option>";
+                        html += "<option value=\"Bl\">Boules noires</option>";
+                    html += "</select>"
+                    html += "</div>"
 				html += "<div class=\"space_under_10\">"
 					html += "<label class=\"control-label\" for=\"index_"+i+"\">Index : </label>";
 					html += "<input class=\"form-control\" name=\"index_"+i+"\" id=\"index_"+i+"\" type=\"texte\" placeholder=\"(ex : 18.5)\" />"
@@ -60,7 +71,7 @@ function updateBeginForm()
 function validForm()
 {
 	var nb_players = parseInt($("#select_nb").val());
-	var j, name, index;
+	var j, name, index, departure;
 
 	var error_content = "";
 
@@ -70,6 +81,7 @@ function validForm()
 		name = $("#username_"+i).val();
 		index = $("#index_"+i).val();
 		index = index.replace(",", ".");
+        departure = $("#departure_"+i).val();
 
 		if(name == "")
 		{
@@ -88,6 +100,10 @@ function validForm()
 				error_content += "\t - Joueur "+j+" : l'index n'est pas un nombre/chiffre\n";
 			}
 		}
+        if(departure == '-')
+        {
+            error_content += "\t - Joueur "+j+" : il faut choisir une couleur de départ\n";
+        }
 	}
 
 	if(error_content != "")
