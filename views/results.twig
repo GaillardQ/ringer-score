@@ -29,7 +29,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="center">
-                <h3>Hole {{ hole }}</h3>
+                <h3>Résultats</h3>
             </div>
 
             <div id="results_content">
@@ -39,11 +39,30 @@
 </div>
 <script>
     $( document ).ready(function() {
-        var slope = new Array();
-        var users = new Array();
+        var slope   = new Array();
+        var users   = new Array();
+        var results = new Array();
 
         var i=0;
         {% for s in scores %}
+            slope[i] = new Array();
+            {% for j in 0..17 %}
+                slope[i][{{ j }}] = {
+                    score   : '{{ s[2][j][0] }}',
+                    putts   : '{{ s[2][j][1] }}',
+                    recus   : '{{ s[2][j][2] }}',
+                    rendus  : '{{ s[2][j][3] }}',
+                    par     : '{{ s[2][j][4] }}'
+                };
+            {% endfor %}
+
+            results[i] = {
+                coups   : {{ s[4][0] }},
+                net     : {{ s[4][1] }},
+                brut    : {{ s[4][2] }},
+                putts   : {{ s[4][3] }}
+            }
+
             users[i] = {
                 name : '{{ s[0] }}',
                 index : '{{ s[1] }}'
@@ -51,7 +70,7 @@
             i++;
         {% endfor %}
 
-        alert("Name : "+users[0]['name']+"\nIndex : "+users[0]['index']);
+        createResultTab(users, slope, results);
     });
 </script>
 </body>
