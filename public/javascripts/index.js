@@ -45,14 +45,14 @@ function updateBeginForm()
 					html += "<input class=\"form-control\" name=\"username_"+i+"\" id=\"username_"+i+"\" type=\"texte\" placeholder=\"(ex : Quentin Gaillard)\" />"
 				html += "</div>";
                 html += "<div class=\"space_under_10\">"
-                    html += "<label class=\"control-label\" for=\"departure_"+i+"\">Départ : </label><br />";
+                    html += "<label class=\"control-label\" for=\"departure_"+i+"\">Départ (boules) : </label><br />";
                     html += "<select class=\"\" name=\"departure_"+i+"\" id=\"departure_"+i+"\">"
                         html += "<option value=\"-\">---</option>";
-                        html += "<option value=\"R\">Boules rouges</option>";
-                        html += "<option value=\"B\">Boules bleues</option>";
-                        html += "<option value=\"Y\">Boules jaunes</option>";
-                        html += "<option value=\"W\">Boules blanches</option>";
-                        html += "<option value=\"Bl\">Boules noires</option>";
+                        html += "<option value=\"R\">Rouges</option>";
+                        html += "<option value=\"B\">Bleues</option>";
+                        html += "<option value=\"Y\">Jaunes</option>";
+                        html += "<option value=\"W\">Blanches</option>";
+                        html += "<option value=\"Bl\">Noires</option>";
                     html += "</select>"
                     html += "</div>"
 				html += "<div class=\"space_under_10\">"
@@ -94,11 +94,15 @@ function validForm()
 		else 
 		{
 			index = parseFloat(index);
-			
+
 			if(isNaN(index))
 			{
 				error_content += "\t - Joueur "+j+" : l'index n'est pas un nombre/chiffre\n";
 			}
+            else if (index > 54)
+            {
+                error_content += "\t - Joueur "+j+" : l'index est trop grand\n";
+            }
 		}
         if(departure == '-')
         {

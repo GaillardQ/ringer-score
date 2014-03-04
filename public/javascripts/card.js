@@ -99,6 +99,10 @@ function validHole()
             {
                 error_content += "\t - "+name+" : le score n'est pas un chiffre\n";
             }
+            else if(score < 0)
+            {
+                error_content += "\t - "+name+" : le score est inférieur à 0\n";
+            }
         }
         if(putts == "")
         {
@@ -109,6 +113,10 @@ function validHole()
             if(isNaN(putts))
             {
                 error_content += "\t - "+name+" : le nombre de putts n'est pas un chiffre\n";
+            }
+            else if(putts < 0)
+            {
+                error_content += "\t - "+name+" : le nombre de putts est inférieur à 0\n";
             }
         }
     }
