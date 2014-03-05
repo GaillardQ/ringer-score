@@ -34,48 +34,73 @@ function createResultTab(users, scores, results)
     var class_width_3 = "col-xs-"+xs3+" col-sm-"+sm3+" col-md-"+md3+" col-lg-"+lg3;
 
     var html = "<div class=\"row\"><div class=\""+class_width_1+"\"></div>";
-    html += "<table class='table-bordered table-responsive table-striped "+class_width_2+"'>";
-        html += "<thead class='center thead1'>";
-            html += "<th class='center'>Trou</th>";
-            html += "<th class='center'>Par</th>";
+    html += "<div class=\"table-responsive\">";
+        html += "<table class='table-bordered table-responsive table-striped "+class_width_2+"'>";
+            html += "<thead class='center thead1'>";
+                html += "<th class='center col-black'>Trou</th>";
+                html += "<th class='center col-black'>Par</th>";
+                for(var i=0; i<nb_players; i++)
+                {
+                    html += "<th colspan='4' class='center col-black'>"+users[i]['name']+"<br />("+users[i]['index']+")</th>";
+                }
+            html += "</thead>";
+            html += "<thead class='center thead2'>";
+            html += "<th class='center col-black'></th>";
+            html += "<th class='center col-black'></th>";
             for(var i=0; i<nb_players; i++)
             {
-                html += "<th colspan='4' class='center'>"+users[i]['name']+"<br />("+users[i]['index']+")</th>";
+                html += "<th class='center'>Coups</th>";
+                html += "<th class='center'>Net</th>";
+                html += "<th class='center'>Brut</th>";
+                html += "<th class='center col-black'>Putt</th>";
             }
-        html += "</thead>";
-        html += "<thead class='center thead2'>";
-        html += "<th class='center'></th>";
-        html += "<th class='center'></th>";
-        for(var i=0; i<nb_players; i++)
-        {
-            html += "<th class='center'>Coups</th>";
-            html += "<th class='center'>Net</th>";
-            html += "<th class='center'>Brut</th>";
-            html += "<th class='center'>Putt</th>";
-        }
-        html += "</thead>";
-        html += "<tbody class='center'>";
+            html += "</thead>";
+            html += "<tbody class='center'>";
 
-        var brut = 0;
-        var hole = 0;
-        for(var i=0; i<18; i++)
-        {
-            hole = i+1;
-            html += "<tr>";
-                html += "<td>"+hole+"</td>";
-                html += "<td>"+scores[0][i]['par']+"</td>";
-                for(var j=0; j<nb_players; j++)
-                {
-                    brut = parseInt(scores[j][i]['score']) - parseInt(scores[j][i]['par']);
-                    html += "<td>"+scores[j][i]['score']+"</td>";
-                    html += "<td>"+scores[j][i]['rendus']+"</td>";
-                    html += "<td>"+brut+"</td>";
-                    html += "<td>"+scores[j][i]['putts']+"</td>";
-                }
-            html += "</tr>";
-        }
-        html += "</tbody>";
-    html += "</table>";
+            var brut = 0;
+            var hole = 0;
+            var par_total = 0;
+            for(var i=0; i<18; i++)
+            {
+                hole = i+1;
+                html += "<tr>";
+                    html += "<td>"+hole+"</td>";
+                    par_total += parseInt(scores[0][i]['par']);
+                    html += "<td>"+scores[0][i]['par']+"</td>";
+                    for(var j=0; j<nb_players; j++)
+                    {
+                        if(scores[j][i]['score'] != 0)
+                        {
+                            brut = parseInt(scores[j][i]['score']) - parseInt(scores[j][i]['par']);
+                            html += "<td>"+scores[j][i]['score']+"</td>";
+                            html += "<td>"+scores[j][i]['rendus']+"</td>";
+                            html += "<td>"+brut+"</td>";
+                            html += "<td class=\"col-black\">"+scores[j][i]['putts']+"</td>";
+                        }
+                        else
+                        {
+                            html += "<td>X</td>";
+                            html += "<td>X</td>";
+                            html += "<td>X</td>";
+                            html += "<td class=\"col-black\">X</td>";
+                        }
+                    }
+                html += "</tr>";
+            }
+            html += "</tbody>";
+            html += "<tfoot class='center'>";
+            html += "<td class='center'></td>";
+            html += "<td class='center'>"+par_total+"</td>";
+            for(var i=0; i<nb_players; i++)
+            {
+                html += "<td class='center'>"+results[i]['coups']+"</td>";
+                html += "<td class='center'>"+results[i]['net']+"</td>";
+                html += "<td class='center'>"+results[i]['brut']+"</td>";
+                html += "<td class='center col-black'>"+results[i]['putts']+"</td>";
+            }
+            html += "</thead>";
+        html += "</table>";
+    html += "</div>";
         /*html += "<div class=\""+class_width_2+" space_under_50\">";
         html += "<fieldset>"
         html += "<legend>Joueur "+j+"</legend>";

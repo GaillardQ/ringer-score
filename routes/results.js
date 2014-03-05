@@ -17,11 +17,15 @@ exports.index = function(req, res){
         putts = 0;
         for(var j=0; j<18; j++)
         {
-            par_total = parseInt(scores[i][2][j][4]);
+            if(scores[i][2][j][0] != 0)
+            {
+                par_total += parseInt(scores[i][2][j][4]);
+            }
             total += parseInt(scores[i][2][j][0]);
             net += parseInt(scores[i][2][j][3]);
             putts += parseInt(scores[i][2][j][1]);
         }
+
         brut = total - par_total;
 
 

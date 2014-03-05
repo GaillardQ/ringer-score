@@ -75,6 +75,8 @@ function validForm()
 
 	var error_content = "";
 
+    var res = true;
+
 	for(var i=0; i<nb_players; i++)
 	{
 		j = i+1;

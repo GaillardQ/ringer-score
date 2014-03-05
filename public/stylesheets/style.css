@@ -73,3 +73,13 @@ a {
 {
     background-color: #A9A9A9;
 }
+
+.tfoot
+{
+
+}
+
+.col-black
+{
+    border-right: #000000 double 1px;
+}
