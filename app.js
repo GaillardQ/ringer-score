@@ -49,39 +49,28 @@ http.createServer(app).listen(app.get('port'), function(){
 
 data_slopes = new Array();
 
+/****************************
+ *                          *
+ *       DONNEES CLUB       *
+ *                          *
+ ****************************/
+
+/**/
 data_slopes["albon"] = new Array();
 
 data_slopes["albon"]["par_total"] = 72;
 
-data_slopes["albon"]["slope"] = new Array();
-data_slopes["albon"]["slope"]["noir"]     = 143;
-data_slopes["albon"]["slope"]["blanc"]    = 143;
-data_slopes["albon"]["slope"]["jaune"]    = 137;
-data_slopes["albon"]["slope"]["bleu"]     = 132;
-data_slopes["albon"]["slope"]["rouge"]    = 128;
+data_slopes["albon"]["slope"] = { noir:143, blanc:143, jaune:137, bleu:132, rouge:128 };
 
-data_slopes["albon"]["ssl"] = { noir: 71.7, blanc:71.7, jaune: 70.1, bleu: 67.9, rouge: 65.7 };
+data_slopes["albon"]["ssl"] = { noir:71.7, blanc:71.7, jaune:70.1, bleu:67.9, rouge:65.7 };
 
 data_slopes["albon"]["ranking"] = [14, 10, 2, 8, 16, 6, 4, 12, 18, 13, 5, 1, 11, 17, 15, 7, 3, 9];
 
 data_slopes["albon"]["par"] = [3, 4, 4, 5, 4, 3, 5, 4, 5, 4, 4, 4, 4, 3, 4, 3, 5, 4];
 
-data_slopes["albon"]["distance"] = new Array();
-data_slopes["albon"]["distance"][0] = {};
-data_slopes["albon"]["distance"][1] = 4;
-data_slopes["albon"]["distance"][2] = 4;
-data_slopes["albon"]["distance"][3] = 5;
-data_slopes["albon"]["distance"][4] = 4;
-data_slopes["albon"]["distance"][5] = 3;
-data_slopes["albon"]["distance"][6] = 5;
-data_slopes["albon"]["distance"][7] = 4;
-data_slopes["albon"]["distance"][8] = 5;
-data_slopes["albon"]["distance"][9] = 4;
-data_slopes["albon"]["distance"][10] = 4;
-data_slopes["albon"]["distance"][11] = 4;
-data_slopes["albon"]["distance"][12] = 4;
-data_slopes["albon"]["distance"][13] = 3;
-data_slopes["albon"]["distance"][14] = 4;
-data_slopes["albon"]["distance"][15] = 3;
-data_slopes["albon"]["distance"][16] = 5;
-data_slopes["albon"]["distance"][17] = 4;
+data_slopes["albon"]["distance"] = {noir:new Array(), blanc:new Array(), jaune:new Array(), bleu:new Array(), rouge:new Array()};
+data_slopes["albon"]["distance"]["noir"]    = [117, 305, 402, 528, 267, 183, 497, 336, 472, 325, 279, 398, 327, 137, 313, 178, 572, 327];
+data_slopes["albon"]["distance"]["blanc"]   = [117, 305, 402, 528, 267, 183, 497, 336, 472, 325, 279, 398, 327, 137, 313, 178, 572, 327];
+data_slopes["albon"]["distance"]["jaune"]   = [112, 286, 391, 498, 249, 166, 443, 326, 458, 314, 272, 379, 314, 126, 305, 172, 539, 314];
+data_slopes["albon"]["distance"]["bleu"]    = [106, 267, 347, 465, 210, 144, 428, 297, 414, 280, 266, 320, 300, 112, 296, 166, 504, 304];
+data_slopes["albon"]["distance"]["rouge"]   = [099, 250, 341, 411, 191, 122, 400, 244, 407, 244, 239, 310, 286, 107, 257, 159, 444, 272];
