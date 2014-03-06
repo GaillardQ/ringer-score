@@ -37,22 +37,22 @@ function createResultTab(users, scores, results)
     html += "<div class=\"table-responsive\">";
         html += "<table class='table-bordered table-responsive table-striped "+class_width_2+"'>";
             html += "<thead class='center thead1'>";
-                html += "<th class='center col-black'>Trou</th>";
-                html += "<th class='center col-black'>Par</th>";
+                html += "<th class='center'>Trou</th>";
+                html += "<th class='center'>Par</th>";
                 for(var i=0; i<nb_players; i++)
                 {
-                    html += "<th colspan='4' class='center col-black'>"+users[i]['name']+"<br />("+users[i]['index']+")</th>";
+                    html += "<th colspan='4' class='center'>"+users[i]['name']+"<br />("+users[i]['index']+")</th>";
                 }
             html += "</thead>";
             html += "<thead class='center thead2'>";
-            html += "<th class='center col-black'></th>";
-            html += "<th class='center col-black'></th>";
+            html += "<th class='center'></th>";
+            html += "<th class='center'></th>";
             for(var i=0; i<nb_players; i++)
             {
                 html += "<th class='center'>Coups</th>";
                 html += "<th class='center'>Net</th>";
                 html += "<th class='center'>Brut</th>";
-                html += "<th class='center col-black'>Putt</th>";
+                html += "<th class='center'>Putt</th>";
             }
             html += "</thead>";
             html += "<tbody class='center'>";
@@ -75,20 +75,20 @@ function createResultTab(users, scores, results)
                             html += "<td>"+scores[j][i]['score']+"</td>";
                             html += "<td>"+scores[j][i]['rendus']+"</td>";
                             html += "<td>"+brut+"</td>";
-                            html += "<td class=\"col-black\">"+scores[j][i]['putts']+"</td>";
+                            html += "<td>"+scores[j][i]['putts']+"</td>";
                         }
                         else
                         {
                             html += "<td>X</td>";
                             html += "<td>X</td>";
                             html += "<td>X</td>";
-                            html += "<td class=\"col-black\">X</td>";
+                            html += "<td>X</td>";
                         }
                     }
                 html += "</tr>";
             }
             html += "</tbody>";
-            html += "<tfoot class='center'>";
+            html += "<tfoot class='tfoot center'>";
             html += "<td class='center'></td>";
             html += "<td class='center'>"+par_total+"</td>";
             for(var i=0; i<nb_players; i++)

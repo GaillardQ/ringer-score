@@ -15,9 +15,7 @@ exports.hole = function(req, res){
     }
 
     var util = require('util');
-    console.log(util.inspect(scores, false, null));
-    console.log(util.inspect(hole_score, false, null));
-    console.log(util.inspect(hole_putts, false, null));
+    var par = scores[0][2][hole-1][4];
 
-  	res.render('card', {title: "Carte de score : "+hole, hole: hole, scores: scores, nb_players:scores.length, hole_scores:hole_score, hole_putts:hole_putts});
+  	res.render('card', {title: "Carte de score : "+hole, hole: hole, par: par, scores: scores, nb_players:scores.length, hole_scores:hole_score, hole_putts:hole_putts});
 };
