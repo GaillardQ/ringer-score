@@ -5,6 +5,13 @@
 exports.index = function(req, res){
 
     var scores = req.session.scores;
+
+    if(scores == undefined)
+    {
+        res.redirect('/');
+        return;
+    }
+
     var nb_players = scores.length;
 
     var total, net, brut, putts, par_total;

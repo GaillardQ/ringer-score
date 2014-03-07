@@ -134,22 +134,11 @@ exports.index = function(req, res){
 
         // ((index) x (slope) / 113) + SSS - PAR
 
-
-        console.log("Index : "+index);
-        console.log("Slope : "+slope);
-        console.log("SSL : "+ssl);
-        console.log("Par : "+data_albon["par_total"]);
-
         nb_shots = ((index) * (slope) / 113) + ssl - data_albon["par_total"];
         nb_shots = Math.round(nb_shots);
 
-        console.log("Coups reçus : "+nb_shots);
-
         var nb_extras = nb_shots % 18;
         var nb_base = (nb_shots - nb_extras)/18;
-
-        console.log("Coups extras : "+nb_extras);
-        console.log("Coups reçus de base : "+nb_base);
 
         var nb;
 

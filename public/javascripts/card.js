@@ -1,4 +1,4 @@
-function createCardForm(hole, nb_players, users, hole_scores, hole_putts)
+function createCardForm(hole, nb_players, users, hole_scores, hole_putts, distance, results, rec_points)
 {
 
 	var xs1 = 0, sm1 = 3, md1 = 4, lg1 = 4;
@@ -40,6 +40,10 @@ function createCardForm(hole, nb_players, users, hole_scores, hole_putts)
                 html += "<input type=\"hidden\" id=\"name_"+i+"\" value=\""+users[i]+"\">";
 				html += "<legend>"+users[i]+"</legend>";
 				html += "<input class=\"hidden\" name=\"id_"+i+"\" id=\"id_"+i+"\" type=\"texte\" value=\""+i+"\"/>"
+                html += "<div class=\"space_under_10\">"
+                    html += "<small>Distance : " + distance[i] + "</small><br />";
+                    html += "<small>Coups reçus : " + rec_points[i] + "</small><br />";
+                html += "</div>"
 				html += "<div class=\"space_under_10\">"
 					html += "<label class=\"control-label\" for=\"score_"+i+"\">Score : </label>";
                     if(hole_scores[i] != "")
@@ -62,6 +66,15 @@ function createCardForm(hole, nb_players, users, hole_scores, hole_putts)
                         html += "<input class=\"form-control\" name=\"putts_"+i+"\" id=\"putts_"+i+"\" type=\"texte\" />"
                     }
 				html += "</div>"
+                html += "<div class=\"col-xs-3 col-sm-3 col-md-3 col-lg-3\" />";
+                html += "<div class=\"col-xs-6 col-sm-6 col-md-6 col-lg-6\">";
+                    html += "<fieldset class=\"space_under_10\">"
+                        html += "<legend><small>Résultats :</small></legend>";
+                        html += "<small>Net : " + results[i]["net"] + "</small><br />";
+                        html += "<small>Brut : " + results[i]["brut"] + "</small><br />";
+                    html += "</fieldset>"
+                html += "</div>";
+                html += "<div class=\"col-xs-3 col-sm-3 col-md-3 col-lg-3\" />";
 			html += "</fieldset>";
 		html += "</div>"
 

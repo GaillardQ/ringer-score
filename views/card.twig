@@ -56,20 +56,37 @@
     </div>
     <script>
       $( document ).ready(function() {
-        var users = new Array();
+        var users       = new Array();
         var hole_scores = new Array();
-        var hole_putts = new Array();
+        var hole_putts  = new Array();
+        var distance    = new Array();
+        var results     = new Array();
+        var rec_points  = new Array();
 
         var i=0;
         {% for s in scores %}
           users[i] = '{{ s[0] }}';
           hole_scores[i] = {{ s[2][hole-1][0] }};
           hole_putts[i] = {{ s[2][hole-1][1] }};
+          rec_points[i] = {{ s[2][hole-1][2] }};
           i++;
         {% endfor %}
 
+        i = 0;
+        {% for d in distance %}
+          distance[i] = {{ d }};
+          i++;
+        {% endfor %}
 
-        createCardForm({{ hole }}, {{ scores|length }}, users, hole_scores, hole_putts);
+        i = 0;
+        {% for r in results %}
+          results[i] = new Array();
+          results[i]["net"] = {{ r["net"] }};
+          results[i]["brut"] = {{ r["brut"] }};
+          i++;
+        {% endfor %}
+
+        createCardForm({{ hole }}, {{ scores|length }}, users, hole_scores, hole_putts, distance, results, rec_points);
       });
     </script>
 
