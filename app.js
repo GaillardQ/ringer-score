@@ -14,7 +14,7 @@ var http = require('http');
 var path = require('path');
 
 var app = express();
-var store  = new express.session.MemoryStore;
+var store = new express.session.MemoryStore();
 // all environments
 app.set('port', process.env.PORT || 5000);
 app.set('views', __dirname + '/views');
@@ -47,7 +47,7 @@ http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-data_slopes = new Array();
+data_slopes = [];
 
 /****************************
  *                          *

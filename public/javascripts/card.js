@@ -48,22 +48,22 @@ function createCardForm(hole, nb_players, users, hole_scores, hole_putts, distan
 					html += "<label class=\"control-label\" for=\"score_"+i+"\">Score : </label>";
                     if(hole_scores[i] != "")
                     {
-					    html += "<input class=\"form-control\" name=\"score_"+i+"\" id=\"score_"+i+"\" type=\"texte\" value=\""+hole_scores[i]+"\"/>"
+					    html += "<input class=\"form-control\" name=\"score_"+i+"\" id=\"score_"+i+"\" type=\"number\" value=\""+hole_scores[i]+"\"/>"
                     }
                     else
                     {
-                        html += "<input class=\"form-control\" name=\"score_"+i+"\" id=\"score_"+i+"\" type=\"texte\"/>"
+                        html += "<input class=\"form-control\" name=\"score_"+i+"\" id=\"score_"+i+"\" type=\"number\"/>"
                     }
 				html += "</div>"
 				html += "<div class=\"space_under_10\">"
 					html += "<label class=\"control-label\" for=\"putts_"+i+"\">Nombre de putts : </label>";
                     if(hole_putts[i] != "")
                     {
-                        html += "<input class=\"form-control\" name=\"putts_"+i+"\" id=\"putts_"+i+"\" type=\"texte\" value=\""+hole_putts[i]+"\"/>"
+                        html += "<input class=\"form-control\" name=\"putts_"+i+"\" id=\"putts_"+i+"\" type=\"number\" value=\""+hole_putts[i]+"\"/>"
                     }
                     else
                     {
-                        html += "<input class=\"form-control\" name=\"putts_"+i+"\" id=\"putts_"+i+"\" type=\"texte\" />"
+                        html += "<input class=\"form-control\" name=\"putts_"+i+"\" id=\"putts_"+i+"\" type=\"number\" />"
                     }
 				html += "</div>"
                 html += "<div class=\"col-xs-3 col-sm-3 col-md-3 col-lg-3\" />";
